@@ -1,0 +1,505 @@
+{
+  "count": 50,
+  "items": [
+    {
+      "idx": 1,
+      "code": "300777",
+      "name": "中简科技",
+      "title": "2025年年度报告(更正后)",
+      "date": "2026-07-02",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-07-02/1225405726.PDF",
+      "file": "01_300777_中简科技_2026-07-02.pdf",
+      "size": 1055666
+    },
+    {
+      "idx": 2,
+      "code": "600715",
+      "name": "文投控股",
+      "title": "文投控股股份有限公司2025年年度报告（修订版）",
+      "date": "2026-06-30",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-07-01/1225400468.PDF",
+      "file": "02_600715_文投控股_2026-06-30.pdf",
+      "size": 1412879
+    },
+    {
+      "idx": 3,
+      "code": "600689",
+      "name": "上海三毛",
+      "title": "上海三毛企业（集团）股份有限公司2025年年度报告（更正后）",
+      "date": "2026-06-30",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-07-01/1225399794.PDF",
+      "file": "03_600689_上海三毛_2026-06-30.pdf",
+      "size": 1104780
+    },
+    {
+      "idx": 4,
+      "code": "603389",
+      "name": "*ST亚振",
+      "title": "2025年年度报告(更正后)",
+      "date": "2026-06-29",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-30/1225397350.PDF",
+      "file": "04_603389_ST亚振_2026-06-29.pdf",
+      "size": 2985192
+    },
+    {
+      "idx": 5,
+      "code": "603843",
+      "name": "*ST正平",
+      "title": "正平股份2023年年度报告（修订版）",
+      "date": "2026-06-29",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-30/1225397187.PDF",
+      "file": "05_603843_ST正平_2026-06-29.pdf",
+      "size": 1606208
+    },
+    {
+      "idx": 6,
+      "code": "688395",
+      "name": "正弦电气",
+      "title": "2025年年度报告（修订版）",
+      "date": "2026-06-26",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-27/1225391093.PDF",
+      "file": "06_688395_正弦电气_2026-06-26.pdf",
+      "size": 1829212
+    },
+    {
+      "idx": 7,
+      "code": "301123",
+      "name": "奕东电子",
+      "title": "奕东电子科技股份有限公司2024年年度报告（更正后）",
+      "date": "2026-06-26",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-26/1225402339.PDF",
+      "file": "07_301123_奕东电子_2026-06-26.pdf",
+      "size": 1879369
+    },
+    {
+      "idx": 8,
+      "code": "300472",
+      "name": "*ST新元",
+      "title": "万向新元科技股份有限公司2023年年度报告（更正后）",
+      "date": "2026-06-26",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-26/1225390648.PDF",
+      "file": "08_300472_ST新元_2026-06-26.pdf",
+      "size": 1321088
+    },
+    {
+      "idx": 9,
+      "code": "300890",
+      "name": "翔丰华",
+      "title": "上海市翔丰华科技股份有限公司2024年年度报告（更正后）",
+      "date": "2026-06-26",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-26/1225390026.PDF",
+      "file": "09_300890_翔丰华_2026-06-26.pdf",
+      "size": 1405562
+    },
+    {
+      "idx": 10,
+      "code": "000972",
+      "name": "*ST中基",
+      "title": "中基健康产业股份有限公司2025年年度报告(更正后)",
+      "date": "2026-06-25",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-26/1225389265.PDF",
+      "file": "10_000972_ST中基_2026-06-25.pdf",
+      "size": 1170671
+    },
+    {
+      "idx": 11,
+      "code": "300904",
+      "name": "威力传动",
+      "title": "2025年年度报告（更正后）",
+      "date": "2026-06-18",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-19/1225378553.PDF",
+      "file": "11_300904_威力传动_2026-06-18.pdf",
+      "size": 1035574
+    },
+    {
+      "idx": 12,
+      "code": "600169",
+      "name": "ST太重",
+      "title": "太原重工2025年年度报告全文（更正后）",
+      "date": "2026-06-18",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-19/1225378361.PDF",
+      "file": "12_600169_ST太重_2026-06-18.pdf",
+      "size": 1531772
+    },
+    {
+      "idx": 13,
+      "code": "601212",
+      "name": "白银有色",
+      "title": "白银有色集团股份有限公司2025年年度报告（修订稿）",
+      "date": "2026-06-16",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-17/1225373797.PDF",
+      "file": "13_601212_白银有色_2026-06-16.pdf",
+      "size": 1851611
+    },
+    {
+      "idx": 14,
+      "code": "688158",
+      "name": "优刻得",
+      "title": "优刻得2025年年度报告（更正后）",
+      "date": "2026-06-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-16/1225371524.PDF",
+      "file": "14_688158_优刻得_2026-06-15.pdf",
+      "size": 1858821
+    },
+    {
+      "idx": 15,
+      "code": "000034",
+      "name": "神州数码",
+      "title": "2025年年度报告（更正后）",
+      "date": "2026-06-12",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-13/1225367858.PDF",
+      "file": "15_000034_神州数码_2026-06-12.pdf",
+      "size": 1713514
+    },
+    {
+      "idx": 16,
+      "code": "000983",
+      "name": "山西焦煤",
+      "title": "2025年年度报告（补充后）",
+      "date": "2026-06-12",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-13/1225367585.PDF",
+      "file": "16_000983_山西焦煤_2026-06-12.pdf",
+      "size": 1317071
+    },
+    {
+      "idx": 17,
+      "code": "000926",
+      "name": "福星股份",
+      "title": "2025年年度报告_（更正后）",
+      "date": "2026-06-12",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-13/1225367351.PDF",
+      "file": "17_000926_福星股份_2026-06-12.pdf",
+      "size": 1202085
+    },
+    {
+      "idx": 18,
+      "code": "688359",
+      "name": "三孚新科",
+      "title": "三孚新科：2025年年度报告（修订版）",
+      "date": "2026-06-09",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-10/1225361136.PDF",
+      "file": "18_688359_三孚新科_2026-06-09.pdf",
+      "size": 3356813
+    },
+    {
+      "idx": 19,
+      "code": "000797",
+      "name": "中国武夷",
+      "title": "2025年年度报告（更正后）",
+      "date": "2026-06-01",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-06-02/1225343938.PDF",
+      "file": "19_000797_中国武夷_2026-06-01.pdf",
+      "size": 1658867
+    },
+    {
+      "idx": 20,
+      "code": "300513",
+      "name": "恒实科技",
+      "title": "2024年年度报告（更正后）",
+      "date": "2026-05-29",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-29/1225338368.PDF",
+      "file": "20_300513_恒实科技_2026-05-29.pdf",
+      "size": 1419718
+    },
+    {
+      "idx": 21,
+      "code": "600965",
+      "name": "*ST福成",
+      "title": "福成股份：2025年年度报告(更正后）",
+      "date": "2026-05-27",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-28/1225332793.PDF",
+      "file": "21_600965_ST福成_2026-05-27.pdf",
+      "size": 1461492
+    },
+    {
+      "idx": 22,
+      "code": "688353",
+      "name": "华盛锂电",
+      "title": "江苏华盛锂电材料股份有限公司2025年年度报告（更正后）",
+      "date": "2026-05-27",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-28/1225332787.PDF",
+      "file": "22_688353_华盛锂电_2026-05-27.pdf",
+      "size": 2604997
+    },
+    {
+      "idx": 23,
+      "code": "000711",
+      "name": "ST京蓝",
+      "title": "2025年年度报告（更正后）",
+      "date": "2026-05-26",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-27/1225331448.PDF",
+      "file": "23_000711_ST京蓝_2026-05-26.pdf",
+      "size": 1405720
+    },
+    {
+      "idx": 24,
+      "code": "300478",
+      "name": "杭州高新",
+      "title": "2024年年度报告（更正后）",
+      "date": "2026-05-25",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-26/1225328606.PDF",
+      "file": "24_300478_杭州高新_2026-05-25.pdf",
+      "size": 1157897
+    },
+    {
+      "idx": 25,
+      "code": "603218",
+      "name": "日月股份",
+      "title": "日月重工股份有限公司2025年年度报告（图文版）",
+      "date": "2026-05-22",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-23/1225326019.PDF",
+      "file": "25_603218_日月股份_2026-05-22.pdf",
+      "size": 24066457
+    },
+    {
+      "idx": 26,
+      "code": "000560",
+      "name": "我爱我家",
+      "title": "2025年年度报告（更正后）",
+      "date": "2026-05-20",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-21/1225321412.PDF",
+      "file": "26_000560_我爱我家_2026-05-20.pdf",
+      "size": 1278606
+    },
+    {
+      "idx": 27,
+      "code": "002569",
+      "name": "*ST步森",
+      "title": "浙江步森服饰股份有限公司2025年年度报告(更正后）",
+      "date": "2026-05-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-16/1225311550.PDF",
+      "file": "27_002569_ST步森_2026-05-15.pdf",
+      "size": 1437067
+    },
+    {
+      "idx": 28,
+      "code": "600381",
+      "name": "*ST春天",
+      "title": "青海春天2025年年度报告全文（修订版）",
+      "date": "2026-05-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-16/1225310482.PDF",
+      "file": "28_600381_ST春天_2026-05-15.pdf",
+      "size": 1338106
+    },
+    {
+      "idx": 29,
+      "code": "600177",
+      "name": "雅戈尔",
+      "title": "雅戈尔时尚股份有限公司2025年年度报告（图文版）",
+      "date": "2026-05-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-16/1225310476.PDF",
+      "file": "29_600177_雅戈尔_2026-05-15.pdf",
+      "size": 33044325
+    },
+    {
+      "idx": 30,
+      "code": "001395",
+      "name": "亚联机械",
+      "title": "2025年年度报告（更正后）",
+      "date": "2026-05-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-16/1225309665.PDF",
+      "file": "30_001395_亚联机械_2026-05-15.pdf",
+      "size": 3720953
+    },
+    {
+      "idx": 31,
+      "code": "600038",
+      "name": "中直股份",
+      "title": "中航直升机股份有限公司2025年年度报告（更正后）",
+      "date": "2026-05-15",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-16/1225309475.PDF",
+      "file": "31_600038_中直股份_2026-05-15.pdf",
+      "size": 1300018
+    },
+    {
+      "idx": 32,
+      "code": "688347",
+      "name": "华虹公司",
+      "title": "2025年年度报告(修订版)",
+      "date": "2026-05-14",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-15/1225307974.PDF",
+      "file": "32_688347_华虹公司_2026-05-14.pdf",
+      "size": 1386471
+    },
+    {
+      "idx": 33,
+      "code": "603226",
+      "name": "菲林格尔",
+      "title": "2025年年度报告（更正后)",
+      "date": "2026-05-13",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-14/1225304722.PDF",
+      "file": "33_603226_菲林格尔_2026-05-13.pdf",
+      "size": 1514614
+    },
+    {
+      "idx": 34,
+      "code": "000885",
+      "name": "城发环境",
+      "title": "2025年年度报告（更正后）",
+      "date": "2026-05-13",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-14/1225304114.PDF",
+      "file": "34_000885_城发环境_2026-05-13.pdf",
+      "size": 1288714
+    },
+    {
+      "idx": 35,
+      "code": "688660",
+      "name": "电气风电",
+      "title": "上海电气风电集团股份有限公司2025年年度报告（修订版）",
+      "date": "2026-05-12",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-13/1225301016.PDF",
+      "file": "35_688660_电气风电_2026-05-12.pdf",
+      "size": 1655363
+    },
+    {
+      "idx": 36,
+      "code": "600678",
+      "name": "ST金顶",
+      "title": "公司2025年年度报告全文（修订版）",
+      "date": "2026-05-08",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-09/1225284762.PDF",
+      "file": "36_600678_ST金顶_2026-05-08.pdf",
+      "size": 1420027
+    },
+    {
+      "idx": 37,
+      "code": "300126",
+      "name": "锐奇股份",
+      "title": "2025年年度报告（更正后）",
+      "date": "2026-05-08",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-08/1225284871.PDF",
+      "file": "37_300126_锐奇股份_2026-05-08.pdf",
+      "size": 997814
+    },
+    {
+      "idx": 38,
+      "code": "300137",
+      "name": "先河环保",
+      "title": "2025年年度报告（更正后）",
+      "date": "2026-05-08",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-08/1225284028.PDF",
+      "file": "38_300137_先河环保_2026-05-08.pdf",
+      "size": 1159419
+    },
+    {
+      "idx": 39,
+      "code": "301607",
+      "name": "富特科技",
+      "title": "2025年年度报告 (更正后)",
+      "date": "2026-05-07",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-07/1225283007.PDF",
+      "file": "39_301607_富特科技_2026-05-07.pdf",
+      "size": 1368235
+    },
+    {
+      "idx": 40,
+      "code": "600839",
+      "name": "四川长虹",
+      "title": "四川长虹2025年年度报告（更正后）",
+      "date": "2026-05-06",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-07/1225280429.PDF",
+      "file": "40_600839_四川长虹_2026-05-06.pdf",
+      "size": 3030412
+    },
+    {
+      "idx": 41,
+      "code": "600187",
+      "name": "国中水务",
+      "title": "2025年年度报告（修订版）",
+      "date": "2026-05-05",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-06/1225277429.PDF",
+      "file": "41_600187_国中水务_2026-05-05.pdf",
+      "size": 1521722
+    },
+    {
+      "idx": 42,
+      "code": "600581",
+      "name": "*ST八钢",
+      "title": "八一钢铁2025年年度报告修订版",
+      "date": "2026-04-30",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-01/1225274079.PDF",
+      "file": "42_600581_ST八钢_2026-04-30.pdf",
+      "size": 1388036
+    },
+    {
+      "idx": 43,
+      "code": "688548",
+      "name": "广钢气体",
+      "title": "2025年年度报告（更正版）",
+      "date": "2026-04-30",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-05-01/1225273748.PDF",
+      "file": "43_688548_广钢气体_2026-04-30.pdf",
+      "size": 2346204
+    },
+    {
+      "idx": 44,
+      "code": "002808",
+      "name": "*ST恒久",
+      "title": "2025年年度报告",
+      "date": "2026-04-30",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225275793.pdf",
+      "file": "44_002808_ST恒久_2026-04-30.pdf",
+      "size": 1214633
+    },
+    {
+      "idx": 45,
+      "code": "300808",
+      "name": "久量股份",
+      "title": "湖北久量股份有限公司2025年年度报告（更正后）",
+      "date": "2026-04-30",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225274810.PDF",
+      "file": "45_300808_久量股份_2026-04-30.pdf",
+      "size": 1559810
+    },
+    {
+      "idx": 46,
+      "code": "002898",
+      "name": "*ST赛隆",
+      "title": "2025年年度报告",
+      "date": "2026-04-30",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225274273.PDF",
+      "file": "46_002898_ST赛隆_2026-04-30.pdf",
+      "size": 1525353
+    },
+    {
+      "idx": 47,
+      "code": "300572",
+      "name": "安车检测",
+      "title": "2025年年度报告",
+      "date": "2026-04-30",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225274378.PDF",
+      "file": "47_300572_安车检测_2026-04-30.pdf",
+      "size": 1298440
+    },
+    {
+      "idx": 48,
+      "code": "002310",
+      "name": "东方新能",
+      "title": "2025年年度报告",
+      "date": "2026-04-30",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225273589.PDF",
+      "file": "48_002310_东方新能_2026-04-30.pdf",
+      "size": 3885696
+    },
+    {
+      "idx": 49,
+      "code": "000858",
+      "name": "五 粮 液",
+      "title": "2025年年度报告",
+      "date": "2026-04-30",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225273091.PDF",
+      "file": "49_000858_五 粮 液_2026-04-30.pdf",
+      "size": 3085658
+    },
+    {
+      "idx": 50,
+      "code": "300716",
+      "name": "ST泉为",
+      "title": "2025年年度报告",
+      "date": "2026-04-29",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225269635.PDF",
+      "file": "50_300716_ST泉为_2026-04-29.pdf",
+      "size": 1468276
+    }
+  ]
+}
