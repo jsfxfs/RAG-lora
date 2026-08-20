@@ -8,8 +8,10 @@
   python generate_qa.py                 # 全量 50 份(带断点续存, 已完成的自动跳过)
   python generate_qa.py --limit 10         # 仅前 10 份(显式控制子集)
   python generate_qa.py --max-chunks 20    # 每份最多 20 块
-  python generate_qa.py --workers 2        # API 并发数(默认 2; 山大共享代理省着用, 可调大)
-  python generate_qa.py --fresh            # 忽略已有产出, 从头重跑(目标子集内)
+   python generate_qa.py --workers 2        # API 并发数(默认 2; 山大共享代理省着用, 可调大)
+   python generate_qa.py --merge-chars 8000  # 相邻非表格块合并发, 单次调用封顶字数(默认 8000; 0=不合并)
+   python generate_qa.py --qa-per 6          # 每次调用让模型生成的问答对数量(默认 6)
+   python generate_qa.py --fresh            # 忽略已有产出, 从头重跑(目标子集内)
 断点续存: 每跑完一份即落盘; 重跑时载入已有 qa_alpaca/qa_sharegpt/rag_chunks, 按 source 跳过已完成 PDF。
 """
 import os, sys, json, re, urllib.request, ssl
@@ -45,6 +47,10 @@ _lim = _arg("--limit")
 LIMIT = int(_lim) if _lim is not None else None      # 仅跑前 N 份(显式子集)
 _w = _arg("--workers")
 WORKERS = int(_w) if _w is not None else 2           # API 并发数(默认 2, 山大共享代理省着用)
+_mc2 = _arg("--merge-chars")
+MERGE_CHARS = int(_mc2) if _mc2 is not None else 8000  # 相邻非表格块合并封顶字数(0=不合并)
+_qp = _arg("--qa-per")
+QA_PER = int(_qp) if _qp is not None else 6            # 单次调用生成的问答对数量
 FRESH = "--fresh" in sys.argv                        # 忽略已有产出, 从头重跑
 
 # ---- 读 .env ----
@@ -68,20 +74,22 @@ def digit_ratio(seg):
     return sum(c.isdigit() for c in seg) / max(1, len(seg))
 
 
-PROMPT = (
-    "你是金融财报分析助手。下面是一份上市公司年度报告的一个片段。\n"
-    "请基于【片段原文】生成 2~3 个中文问答对, 要求:\n"
-    "1) 问题要自然(像真实用户会问的), 回答严格基于片段、不编造;\n"
-    "2) 优先事实/定义/业务/定性分析类; 若片段含财务数字, 仅在原文明确给出时使用, 不要推算;\n"
-    "3) 只输出 JSON 数组, 不要解释, 格式:[{\"instruction\":\"...\",\"output\":\"...\"}]\n\n"
-    "【片段原文】\n"
-)
+def build_prompt():
+    lo, hi = max(2, QA_PER - 1), QA_PER + 1
+    return (
+        "你是金融财报分析助手。下面是一份上市公司年度报告的若干片段(可能来自相邻章节, 用【块N】分隔)。\n"
+        f"请基于【片段原文】尽可能多地生成中文问答对(建议 {lo}~{hi} 个, 片段多/信息丰富时可更多), 要求:\n"
+        "1) 问题要自然(像真实用户会问的), 回答严格基于片段、不编造;\n"
+        "2) 优先事实/定义/业务/定性分析类; 若片段含财务数字, 仅在原文明确给出时使用, 不要推算;\n"
+        "3) 只输出 JSON 数组, 不要解释, 格式:[{\"instruction\":\"...\",\"output\":\"...\"}]\n\n"
+        "【片段原文】\n"
+    )
 
 
-def call_model(seg):
+def call_model(prefix, seg):
     body = json.dumps({
-        "model": MODEL, "max_tokens": 1024,
-        "messages": [{"role": "user", "content": PROMPT + seg}],
+        "model": MODEL, "max_tokens": 2048,
+        "messages": [{"role": "user", "content": prefix + seg}],
     }).encode()
     req = urllib.request.Request(
         f"{BASE}/v1/messages", data=body, headers={
@@ -166,31 +174,45 @@ def main():
         with open(os.path.join(EXTRACT_DIR, base + "_chunks.json"), "w", encoding="utf-8") as f:
             json.dump(chunks, f, ensure_ascii=False, indent=2)
         # 预构建 rag 列表(所有块, 含跳过的纯数字块); 仅非表格纯数字密集块跳过 QA
-        seg_by_idx = {}
+        # QA 组: 把相邻同类块(非表格 / 表格)按字符预算合并, 减少 API 调用次数; 跨类型不合并以保上下文干净
+        groups = []  # [(group_id, text)]
+        buf, buf_chars, buf_type, gid = [], 0, None, 0
         for ci, seg in enumerate(chunks, 1):
             is_table = bool(re.match(r"^【.+第\d+页】", seg))
             rag.append({"source": fn, "chunk_id": ci, "text": seg, "is_table": is_table})
             if (not is_table) and digit_ratio(seg) >= 0.5:
                 print(f"   块{ci}: 纯数字密集(非表格), 跳过QA(仍进RAG)")
                 continue
-            seg_by_idx[ci] = seg
-        # {workers} 并发生成 QA(按块顺序组装结果, 不依赖返回顺序)
-        qa_by_idx = {}
-        if seg_by_idx:
-            def _gen(ci, seg):
+            cur = "table" if is_table else "text"
+            # 类型切换 或 超预算 -> 封口; MERGE_CHARS<=0 时每块独立成组(不合并)
+            if buf and (not MERGE_CHARS or cur != buf_type or buf_chars + len(seg) > MERGE_CHARS):
+                gid += 1
+                groups.append((gid, "\n\n---\n\n".join(buf)))
+                buf, buf_chars, buf_type = [], 0, None
+            buf.append(f"【块{ci}】\n{seg}")
+            buf_chars += len(seg)
+            buf_type = cur
+        if buf:
+            gid += 1
+            groups.append((gid, "\n\n---\n\n".join(buf)))
+        # {workers} 并发生成 QA(各组独立调用, 不依赖返回顺序)
+        qa_by_gid = {}
+        if groups:
+            prefix = build_prompt()
+            def _gen(gid, text):
                 try:
-                    return ci, parse_qa(call_model(seg))
+                    return gid, parse_qa(call_model(prefix, text))
                 except Exception as e:
-                    print(f"   块{ci}: 调用失败 {e}")
-                    return ci, []
+                    print(f"   组{gid}: 调用失败 {e}")
+                    return gid, []
             with ThreadPoolExecutor(max_workers=WORKERS) as ex:
-                futs = [ex.submit(_gen, ci, seg) for ci, seg in seg_by_idx.items()]
+                futs = [ex.submit(_gen, gid, text) for gid, text in groups]
                 for f in as_completed(futs):
-                    ci, qas = f.result()
-                    qa_by_idx[ci] = qas
-                    print(f"   块{ci}: 生成 {len(qas)} 对 (累计 {sum(len(v) for v in qa_by_idx.values())})")
-        for ci in seg_by_idx:
-            for q in qa_by_idx.get(ci, []):
+                    gid, qas = f.result()
+                    qa_by_gid[gid] = qas
+                    print(f"   组{gid}: 生成 {len(qas)} 对 (累计 {sum(len(v) for v in qa_by_gid.values())})")
+        for gid in sorted(qa_by_gid):
+            for q in qa_by_gid[gid]:
                 alpaca.append(q)
                 sharegpt.append({"conversations": [
                     {"role": "user", "content": q["instruction"]},

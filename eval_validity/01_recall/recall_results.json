@@ -1,0 +1,4234 @@
+{
+ "args": {
+  "limit": 100,
+  "seed": 42,
+  "configs": "vec,hybrid,hr,hr_route",
+  "ks": "6,20",
+  "candidates": 20,
+  "qa": "/data2/Data/jiajun/3dgs/BrandingWall/llmfactory/RAG-lora/heldout_B/qa_alpaca.json",
+  "index": "index",
+  "out": "/data2/Data/jiajun/3dgs/BrandingWall/llmfactory/RAG-lora/eval_validity/01_recall/recall_results.json",
+  "device": "cpu",
+  "fresh": false
+ },
+ "report": {
+  "vec": {
+   "n": 100,
+   "routed": 0,
+   "doc_recall@6": 0.93,
+   "chunk_recall@6": 0.42857142857142855,
+   "chunk_n": 21,
+   "doc_recall@20": 1.0,
+   "chunk_recall@20": 0.47619047619047616
+  },
+  "hybrid": {
+   "n": 100,
+   "routed": 0,
+   "doc_recall@6": 0.94,
+   "chunk_recall@6": 0.5238095238095238,
+   "chunk_n": 21,
+   "doc_recall@20": 1.0,
+   "chunk_recall@20": 0.6666666666666666
+  },
+  "hr": {
+   "n": 100,
+   "routed": 0,
+   "doc_recall@6": 0.92,
+   "chunk_recall@6": 0.6666666666666666,
+   "chunk_n": 21,
+   "doc_recall@20": 1.0,
+   "chunk_recall@20": 0.6666666666666666
+  },
+  "hr_route": {
+   "n": 100,
+   "routed": 100,
+   "doc_recall@6": 1.0,
+   "chunk_recall@6": 0.8095238095238095,
+   "chunk_n": 21,
+   "doc_recall@20": 1.0,
+   "chunk_recall@20": 0.8571428571428571
+  }
+ },
+ "details": {
+  "vec": [
+   {
+    "q": "城发环境财务报表批准报出日是什么时候？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在面对汇率风险时，主要使用了什么金融工具进行管理？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [
+     294
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "优刻得青浦数据中心项目截至2025年12月31日的建设进度如何？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔的借款费用在什么情况下会暂停资本化？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液是否制定了市值管理制度？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在年度报告中披露了按单项计提坏账准备的应收账款，具体有哪些单位？计提比例是多少？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对使用寿命不确定的无形资产如何处理？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤的主营业务和主要产品有哪些？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔在2024年因什么事项受到上海证监局行政监管措施？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的股份支付分为哪两种类型？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境扣除非经常性损益后的加权平均净资产收益率是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔在金融资产减值中，对于购买或源生的已发生信用减值的金融资产，如何处理损失准备？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的前十大股东中，哪些股东与沈锦良存在表决权委托关系？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [
+     125
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "神州数码在什么条件下可以对金融资产和金融负债进行抵销？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [
+     159
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "中国武夷在报告中如何确保关联交易的公平性？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中直股份对于同一控制下的企业合并，长期股权投资初始投资成本如何确定？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得如何确认合同资产？合同资产与应收账款有何区别？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得的主要经营活动包括哪些？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "在神州数码2025年度的合并现金流量表中，投资活动产生的现金流量净额是多少？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对同一控制下企业合并中取得的资产和负债，在合并日如何计量？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     162
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "白银有色对于不同发展阶段的现金分红比例是如何规定的？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "日月股份在应收票据的坏账准备中，对哪类票据按单项计提了100%的坏账准备？理由是什么？",
+    "source": "25_603218_日月股份_2026-05-22.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷对以公允价值计量且其变动计入其他综合收益的金融资产，其公允价值变动如何处理？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     125
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "优刻得在2025年对治理架构做了哪些调整？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [
+     146
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "华盛锂电如何确定金融工具的公允价值？使用了哪些估值技术？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色股东中信集团在收购报告书中做出了哪些关于保持业务独立性的承诺？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     33
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "菲林格尔作为担保方，为哪些子公司提供了担保？担保总额是多少？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境2025年的基本每股收益和稀释每股收益是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年度的综合收益总额是多少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的会计年度和记账本位币分别是什么？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中直股份的联营企业江西昌河阿古斯特直升机有限公司2025年营业收入和净利润分别是多少？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [
+     70
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "白银有色如何定义预期信用损失？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动2025年公司治理方面有哪些重要变化？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷的独立董事津贴标准是多少？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液与五粮液集团公司签订的商标使用许可协议中，商标使用费如何计算？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得为什么说其核心竞争力存在风险？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤对存货发出采用什么计价方法？存货跌价准备如何计提？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新在2024年执行了哪些财政部颁布的新会计准则？哪些变更对财务报表无影响？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [
+     107
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "中直股份在什么情况下会将存货跌价准备予以转回？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹与四川华鲲振宇智能科技有限责任公司的关联交易涉及哪些类型？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [
+     273,
+     277
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液租用五粮液集团公司的土地，定价标准是如何确定的？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年焦炭产品的营业收入和营业成本同比增减情况如何？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色2025年度董事会决议通过的利润分配预案是什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     153
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "四川长虹持有的衍生金融资产和衍生金融负债在公允价值计量中分别属于哪个层次？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码对预计负债如何进行初始计量？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的存货期末余额中，借款利息资本化金额是多少？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司2025年度的财务报表是何时批准报出的？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在2025年审计委员会会议上，对关税和房地产业务提出了哪些建议？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹本期所得税费用合计是多少？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [
+     377
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "四川长虹在2013年申请解除长虹华意股份限售时，作出了什么承诺？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷在债务重组中作为债务人，如何确认和计量将债务转为权益工具？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     158
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "五粮液2025年年度报告中提到，全国白酒行业在2025年的产量、销售收入和利润总额同比变化情况如何？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [
+     15
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "优刻得2020年限制性股票激励计划在报告期内的考核指标完成情况如何？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔的会计年度和记账本位币分别是什么？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动如何定义现金及现金等价物？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电在石墨负极材料方面有哪些技术进展？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在2025年12月有哪些担保事项涉及神码澳门和神码香港？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司的实际控制人是谁？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码可转换公司债券的发行申请经历了哪些关键步骤？请根据原文简要说明。",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的其他非流动负债在2025年末为何变为0？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹的公司治理与法律、行政法规以及中国证监会关于上市公司治理的规定是否存在重大差异？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷2025年度现金流量表中的经营性往来款本期发生额是多少？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷的子公司武夷（美国）有限公司目前的经营状态如何？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     226
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "华虹公司报告期内有哪些董事和高级管理人员发生了变动？请举例说明。",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电2025年合并所有者权益变动表中，本期增减变动金额（减少以“－”号填列）是多少？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色的中文全称和英文全称分别是什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新存货跌价准备中，库存商品本期计提金额和转回或转销金额分别是多少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码自有品牌产品业务在2025年的营业收入和税后净利润分别是多少？同比增长多少？旗下主要品牌是什么？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得在报告期内的经营活动产生的现金流量净额是多少？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境在子公司权益中，列举的子公司业务分类有哪些？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对同一控制下企业合并形成的长期股权投资，初始投资成本如何确定？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     180
+    ],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液本期经营活动产生的现金流量净额是多少？与上期相比有何变化？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的子公司北京高科数聚技术有限公司在2025年是否发生了减值？计提了多少减值金额？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色2025年度是否进行现金分红？为什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码通过同一控制下的企业合并取得的长期股权投资，初始投资成本如何确定？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动2025年度的营业收入是多少？审计师为什么将收入确认作为关键审计事项？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境各行业的毛利率是多少？与上年同期相比有何变化？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司2025年模拟与电源管理平台销售收入同比增长了多少？主要得益于哪些领域的强劲需求？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年报告中，关于公司治理能力方面，报告期内公司采取了哪些措施？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [
+     140
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "华虹公司年报中，部分信息因涉及商业秘密豁免披露，这是依据什么规定？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹2025年度母公司基本每股收益是多少？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在2025年完成了哪项矿业公司股权的收购？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境作为承租方，与通辽华通环保有限责任公司的租赁资产是什么？本期支付的租金是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液2025年末应收票据的账面余额是多少？是否有已质押或已背书未到期的应收票据？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年度经营活动产生的现金流量净额是多少？与2023年相比是增加还是减少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年经营活动产生的现金流量净额是多少？同比变化的主要原因是什么？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境副总经理马小宇在报告期内的任职状态和税前报酬是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码关于本次募集资金是否用于房地产业务的承诺是什么？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷2025年期末货币资金中，受限制的资金总额是多少？主要包括哪些类型？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     175
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "城发环境在核心竞争力分析中提到了哪些方面？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤的“质量回报双提升”行动方案是在哪一天披露的？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电稳定股价的具体措施有哪些？按什么顺序实施？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔管理层对财务报表的编制承担哪些责任？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在2025年因信息披露问题面临投资者诉讼风险吗？公司是否已为此计提预计负债？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年年度报告中，母公司现金流量表的经营活动产生的现金流量净额是多少？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [
+     145
+    ],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "威力传动报告期内聘任的会计师事务所是哪家？报酬是多少？内部控制审计费用是多少？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司的实际控制人是谁？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液在2025年度的内部控制审计报告是由哪家会计师事务所出具的？意见类型是什么？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境如何利用河南省的政策机遇发展水务业务？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [
+     9
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "杭州高新的股票代码、法定代表人及注册地址分别是什么？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [
+     1
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   }
+  ],
+  "hybrid": [
+   {
+    "q": "城发环境财务报表批准报出日是什么时候？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在面对汇率风险时，主要使用了什么金融工具进行管理？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [
+     294
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "优刻得青浦数据中心项目截至2025年12月31日的建设进度如何？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔的借款费用在什么情况下会暂停资本化？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液是否制定了市值管理制度？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在年度报告中披露了按单项计提坏账准备的应收账款，具体有哪些单位？计提比例是多少？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对使用寿命不确定的无形资产如何处理？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤的主营业务和主要产品有哪些？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔在2024年因什么事项受到上海证监局行政监管措施？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的股份支付分为哪两种类型？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境扣除非经常性损益后的加权平均净资产收益率是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔在金融资产减值中，对于购买或源生的已发生信用减值的金融资产，如何处理损失准备？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的前十大股东中，哪些股东与沈锦良存在表决权委托关系？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [
+     125
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "神州数码在什么条件下可以对金融资产和金融负债进行抵销？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [
+     159
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "中国武夷在报告中如何确保关联交易的公平性？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中直股份对于同一控制下的企业合并，长期股权投资初始投资成本如何确定？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得如何确认合同资产？合同资产与应收账款有何区别？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得的主要经营活动包括哪些？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "在神州数码2025年度的合并现金流量表中，投资活动产生的现金流量净额是多少？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对同一控制下企业合并中取得的资产和负债，在合并日如何计量？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     162
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "白银有色对于不同发展阶段的现金分红比例是如何规定的？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "日月股份在应收票据的坏账准备中，对哪类票据按单项计提了100%的坏账准备？理由是什么？",
+    "source": "25_603218_日月股份_2026-05-22.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷对以公允价值计量且其变动计入其他综合收益的金融资产，其公允价值变动如何处理？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     125
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "优刻得在2025年对治理架构做了哪些调整？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [
+     146
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "华盛锂电如何确定金融工具的公允价值？使用了哪些估值技术？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色股东中信集团在收购报告书中做出了哪些关于保持业务独立性的承诺？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     33
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "菲林格尔作为担保方，为哪些子公司提供了担保？担保总额是多少？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境2025年的基本每股收益和稀释每股收益是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年度的综合收益总额是多少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的会计年度和记账本位币分别是什么？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中直股份的联营企业江西昌河阿古斯特直升机有限公司2025年营业收入和净利润分别是多少？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [
+     70
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "白银有色如何定义预期信用损失？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动2025年公司治理方面有哪些重要变化？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷的独立董事津贴标准是多少？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液与五粮液集团公司签订的商标使用许可协议中，商标使用费如何计算？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得为什么说其核心竞争力存在风险？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤对存货发出采用什么计价方法？存货跌价准备如何计提？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新在2024年执行了哪些财政部颁布的新会计准则？哪些变更对财务报表无影响？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [
+     107
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "中直股份在什么情况下会将存货跌价准备予以转回？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹与四川华鲲振宇智能科技有限责任公司的关联交易涉及哪些类型？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [
+     273,
+     277
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液租用五粮液集团公司的土地，定价标准是如何确定的？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年焦炭产品的营业收入和营业成本同比增减情况如何？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色2025年度董事会决议通过的利润分配预案是什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     153
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "四川长虹持有的衍生金融资产和衍生金融负债在公允价值计量中分别属于哪个层次？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码对预计负债如何进行初始计量？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的存货期末余额中，借款利息资本化金额是多少？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司2025年度的财务报表是何时批准报出的？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在2025年审计委员会会议上，对关税和房地产业务提出了哪些建议？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹本期所得税费用合计是多少？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [
+     377
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "四川长虹在2013年申请解除长虹华意股份限售时，作出了什么承诺？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷在债务重组中作为债务人，如何确认和计量将债务转为权益工具？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     158
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液2025年年度报告中提到，全国白酒行业在2025年的产量、销售收入和利润总额同比变化情况如何？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [
+     15
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "优刻得2020年限制性股票激励计划在报告期内的考核指标完成情况如何？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔的会计年度和记账本位币分别是什么？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动如何定义现金及现金等价物？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电在石墨负极材料方面有哪些技术进展？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在2025年12月有哪些担保事项涉及神码澳门和神码香港？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司的实际控制人是谁？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码可转换公司债券的发行申请经历了哪些关键步骤？请根据原文简要说明。",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的其他非流动负债在2025年末为何变为0？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹的公司治理与法律、行政法规以及中国证监会关于上市公司治理的规定是否存在重大差异？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷2025年度现金流量表中的经营性往来款本期发生额是多少？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷的子公司武夷（美国）有限公司目前的经营状态如何？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     226
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "华虹公司报告期内有哪些董事和高级管理人员发生了变动？请举例说明。",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电2025年合并所有者权益变动表中，本期增减变动金额（减少以“－”号填列）是多少？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色的中文全称和英文全称分别是什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新存货跌价准备中，库存商品本期计提金额和转回或转销金额分别是多少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码自有品牌产品业务在2025年的营业收入和税后净利润分别是多少？同比增长多少？旗下主要品牌是什么？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得在报告期内的经营活动产生的现金流量净额是多少？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境在子公司权益中，列举的子公司业务分类有哪些？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对同一控制下企业合并形成的长期股权投资，初始投资成本如何确定？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     180
+    ],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液本期经营活动产生的现金流量净额是多少？与上期相比有何变化？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的子公司北京高科数聚技术有限公司在2025年是否发生了减值？计提了多少减值金额？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色2025年度是否进行现金分红？为什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码通过同一控制下的企业合并取得的长期股权投资，初始投资成本如何确定？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动2025年度的营业收入是多少？审计师为什么将收入确认作为关键审计事项？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境各行业的毛利率是多少？与上年同期相比有何变化？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司2025年模拟与电源管理平台销售收入同比增长了多少？主要得益于哪些领域的强劲需求？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年报告中，关于公司治理能力方面，报告期内公司采取了哪些措施？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [
+     140
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "华虹公司年报中，部分信息因涉及商业秘密豁免披露，这是依据什么规定？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹2025年度母公司基本每股收益是多少？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在2025年完成了哪项矿业公司股权的收购？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境作为承租方，与通辽华通环保有限责任公司的租赁资产是什么？本期支付的租金是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液2025年末应收票据的账面余额是多少？是否有已质押或已背书未到期的应收票据？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年度经营活动产生的现金流量净额是多少？与2023年相比是增加还是减少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年经营活动产生的现金流量净额是多少？同比变化的主要原因是什么？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境副总经理马小宇在报告期内的任职状态和税前报酬是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码关于本次募集资金是否用于房地产业务的承诺是什么？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷2025年期末货币资金中，受限制的资金总额是多少？主要包括哪些类型？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     175
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "城发环境在核心竞争力分析中提到了哪些方面？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤的“质量回报双提升”行动方案是在哪一天披露的？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电稳定股价的具体措施有哪些？按什么顺序实施？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔管理层对财务报表的编制承担哪些责任？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在2025年因信息披露问题面临投资者诉讼风险吗？公司是否已为此计提预计负债？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年年度报告中，母公司现金流量表的经营活动产生的现金流量净额是多少？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [
+     145
+    ],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "威力传动报告期内聘任的会计师事务所是哪家？报酬是多少？内部控制审计费用是多少？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司的实际控制人是谁？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液在2025年度的内部控制审计报告是由哪家会计师事务所出具的？意见类型是什么？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境如何利用河南省的政策机遇发展水务业务？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [
+     9
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "杭州高新的股票代码、法定代表人及注册地址分别是什么？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [
+     1
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   }
+  ],
+  "hr": [
+   {
+    "q": "城发环境财务报表批准报出日是什么时候？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在面对汇率风险时，主要使用了什么金融工具进行管理？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [
+     294
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "优刻得青浦数据中心项目截至2025年12月31日的建设进度如何？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔的借款费用在什么情况下会暂停资本化？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液是否制定了市值管理制度？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在年度报告中披露了按单项计提坏账准备的应收账款，具体有哪些单位？计提比例是多少？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对使用寿命不确定的无形资产如何处理？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤的主营业务和主要产品有哪些？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔在2024年因什么事项受到上海证监局行政监管措施？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的股份支付分为哪两种类型？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境扣除非经常性损益后的加权平均净资产收益率是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔在金融资产减值中，对于购买或源生的已发生信用减值的金融资产，如何处理损失准备？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的前十大股东中，哪些股东与沈锦良存在表决权委托关系？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [
+     125
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "神州数码在什么条件下可以对金融资产和金融负债进行抵销？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [
+     159
+    ],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "中国武夷在报告中如何确保关联交易的公平性？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中直股份对于同一控制下的企业合并，长期股权投资初始投资成本如何确定？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得如何确认合同资产？合同资产与应收账款有何区别？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得的主要经营活动包括哪些？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "在神州数码2025年度的合并现金流量表中，投资活动产生的现金流量净额是多少？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对同一控制下企业合并中取得的资产和负债，在合并日如何计量？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     162
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "白银有色对于不同发展阶段的现金分红比例是如何规定的？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "日月股份在应收票据的坏账准备中，对哪类票据按单项计提了100%的坏账准备？理由是什么？",
+    "source": "25_603218_日月股份_2026-05-22.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷对以公允价值计量且其变动计入其他综合收益的金融资产，其公允价值变动如何处理？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     125
+    ],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "优刻得在2025年对治理架构做了哪些调整？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [
+     146
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "华盛锂电如何确定金融工具的公允价值？使用了哪些估值技术？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色股东中信集团在收购报告书中做出了哪些关于保持业务独立性的承诺？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     33
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "菲林格尔作为担保方，为哪些子公司提供了担保？担保总额是多少？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境2025年的基本每股收益和稀释每股收益是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年度的综合收益总额是多少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的会计年度和记账本位币分别是什么？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中直股份的联营企业江西昌河阿古斯特直升机有限公司2025年营业收入和净利润分别是多少？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [
+     70
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "白银有色如何定义预期信用损失？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动2025年公司治理方面有哪些重要变化？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷的独立董事津贴标准是多少？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液与五粮液集团公司签订的商标使用许可协议中，商标使用费如何计算？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得为什么说其核心竞争力存在风险？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤对存货发出采用什么计价方法？存货跌价准备如何计提？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新在2024年执行了哪些财政部颁布的新会计准则？哪些变更对财务报表无影响？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [
+     107
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "中直股份在什么情况下会将存货跌价准备予以转回？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹与四川华鲲振宇智能科技有限责任公司的关联交易涉及哪些类型？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [
+     273,
+     277
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液租用五粮液集团公司的土地，定价标准是如何确定的？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年焦炭产品的营业收入和营业成本同比增减情况如何？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色2025年度董事会决议通过的利润分配预案是什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     153
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "四川长虹持有的衍生金融资产和衍生金融负债在公允价值计量中分别属于哪个层次？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码对预计负债如何进行初始计量？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的存货期末余额中，借款利息资本化金额是多少？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司2025年度的财务报表是何时批准报出的？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在2025年审计委员会会议上，对关税和房地产业务提出了哪些建议？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹本期所得税费用合计是多少？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [
+     377
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "四川长虹在2013年申请解除长虹华意股份限售时，作出了什么承诺？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷在债务重组中作为债务人，如何确认和计量将债务转为权益工具？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     158
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液2025年年度报告中提到，全国白酒行业在2025年的产量、销售收入和利润总额同比变化情况如何？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [
+     15
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "优刻得2020年限制性股票激励计划在报告期内的考核指标完成情况如何？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔的会计年度和记账本位币分别是什么？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动如何定义现金及现金等价物？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电在石墨负极材料方面有哪些技术进展？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在2025年12月有哪些担保事项涉及神码澳门和神码香港？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司的实际控制人是谁？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码可转换公司债券的发行申请经历了哪些关键步骤？请根据原文简要说明。",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的其他非流动负债在2025年末为何变为0？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹的公司治理与法律、行政法规以及中国证监会关于上市公司治理的规定是否存在重大差异？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷2025年度现金流量表中的经营性往来款本期发生额是多少？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷的子公司武夷（美国）有限公司目前的经营状态如何？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     226
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "华虹公司报告期内有哪些董事和高级管理人员发生了变动？请举例说明。",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电2025年合并所有者权益变动表中，本期增减变动金额（减少以“－”号填列）是多少？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色的中文全称和英文全称分别是什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新存货跌价准备中，库存商品本期计提金额和转回或转销金额分别是多少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码自有品牌产品业务在2025年的营业收入和税后净利润分别是多少？同比增长多少？旗下主要品牌是什么？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得在报告期内的经营活动产生的现金流量净额是多少？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境在子公司权益中，列举的子公司业务分类有哪些？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对同一控制下企业合并形成的长期股权投资，初始投资成本如何确定？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     180
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液本期经营活动产生的现金流量净额是多少？与上期相比有何变化？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的子公司北京高科数聚技术有限公司在2025年是否发生了减值？计提了多少减值金额？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色2025年度是否进行现金分红？为什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码通过同一控制下的企业合并取得的长期股权投资，初始投资成本如何确定？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": false,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动2025年度的营业收入是多少？审计师为什么将收入确认作为关键审计事项？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境各行业的毛利率是多少？与上年同期相比有何变化？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司2025年模拟与电源管理平台销售收入同比增长了多少？主要得益于哪些领域的强劲需求？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年报告中，关于公司治理能力方面，报告期内公司采取了哪些措施？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [
+     140
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "华虹公司年报中，部分信息因涉及商业秘密豁免披露，这是依据什么规定？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹2025年度母公司基本每股收益是多少？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在2025年完成了哪项矿业公司股权的收购？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境作为承租方，与通辽华通环保有限责任公司的租赁资产是什么？本期支付的租金是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液2025年末应收票据的账面余额是多少？是否有已质押或已背书未到期的应收票据？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年度经营活动产生的现金流量净额是多少？与2023年相比是增加还是减少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年经营活动产生的现金流量净额是多少？同比变化的主要原因是什么？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境副总经理马小宇在报告期内的任职状态和税前报酬是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码关于本次募集资金是否用于房地产业务的承诺是什么？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷2025年期末货币资金中，受限制的资金总额是多少？主要包括哪些类型？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     175
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "城发环境在核心竞争力分析中提到了哪些方面？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤的“质量回报双提升”行动方案是在哪一天披露的？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电稳定股价的具体措施有哪些？按什么顺序实施？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔管理层对财务报表的编制承担哪些责任？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在2025年因信息披露问题面临投资者诉讼风险吗？公司是否已为此计提预计负债？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年年度报告中，母公司现金流量表的经营活动产生的现金流量净额是多少？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [
+     145
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "威力传动报告期内聘任的会计师事务所是哪家？报酬是多少？内部控制审计费用是多少？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司的实际控制人是谁？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液在2025年度的内部控制审计报告是由哪家会计师事务所出具的？意见类型是什么？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境如何利用河南省的政策机遇发展水务业务？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [
+     9
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "杭州高新的股票代码、法定代表人及注册地址分别是什么？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [
+     1
+    ],
+    "routed": null,
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   }
+  ],
+  "hr_route": [
+   {
+    "q": "城发环境财务报表批准报出日是什么时候？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "城发环境",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在面对汇率风险时，主要使用了什么金融工具进行管理？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [
+     294
+    ],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "优刻得青浦数据中心项目截至2025年12月31日的建设进度如何？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": "优刻得",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔的借款费用在什么情况下会暂停资本化？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "菲林格尔",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液是否制定了市值管理制度？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": "五 粮 液",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在年度报告中披露了按单项计提坏账准备的应收账款，具体有哪些单位？计提比例是多少？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对使用寿命不确定的无形资产如何处理？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤的主营业务和主要产品有哪些？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "山西焦煤",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔在2024年因什么事项受到上海证监局行政监管措施？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "菲林格尔",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的股份支付分为哪两种类型？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境扣除非经常性损益后的加权平均净资产收益率是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "城发环境",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔在金融资产减值中，对于购买或源生的已发生信用减值的金融资产，如何处理损失准备？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "菲林格尔",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的前十大股东中，哪些股东与沈锦良存在表决权委托关系？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [
+     125
+    ],
+    "routed": "华盛锂电",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "神州数码在什么条件下可以对金融资产和金融负债进行抵销？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [
+     159
+    ],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "中国武夷在报告中如何确保关联交易的公平性？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": "中国武夷",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中直股份对于同一控制下的企业合并，长期股权投资初始投资成本如何确定？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [],
+    "routed": "中直股份",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得如何确认合同资产？合同资产与应收账款有何区别？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": "优刻得",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得的主要经营活动包括哪些？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": "优刻得",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "在神州数码2025年度的合并现金流量表中，投资活动产生的现金流量净额是多少？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对同一控制下企业合并中取得的资产和负债，在合并日如何计量？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     162
+    ],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "白银有色对于不同发展阶段的现金分红比例是如何规定的？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "日月股份在应收票据的坏账准备中，对哪类票据按单项计提了100%的坏账准备？理由是什么？",
+    "source": "25_603218_日月股份_2026-05-22.pdf",
+    "gold_chunks": [],
+    "routed": "日月股份",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷对以公允价值计量且其变动计入其他综合收益的金融资产，其公允价值变动如何处理？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     125
+    ],
+    "routed": "中国武夷",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "优刻得在2025年对治理架构做了哪些调整？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [
+     146
+    ],
+    "routed": "优刻得",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "华盛锂电如何确定金融工具的公允价值？使用了哪些估值技术？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": "华盛锂电",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色股东中信集团在收购报告书中做出了哪些关于保持业务独立性的承诺？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     33
+    ],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "菲林格尔作为担保方，为哪些子公司提供了担保？担保总额是多少？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "菲林格尔",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境2025年的基本每股收益和稀释每股收益是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "城发环境",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年度的综合收益总额是多少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": "杭州高新",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的会计年度和记账本位币分别是什么？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": "华盛锂电",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中直股份的联营企业江西昌河阿古斯特直升机有限公司2025年营业收入和净利润分别是多少？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [
+     70
+    ],
+    "routed": "中直股份",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "白银有色如何定义预期信用损失？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动2025年公司治理方面有哪些重要变化？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": "威力传动",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷的独立董事津贴标准是多少？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": "中国武夷",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液与五粮液集团公司签订的商标使用许可协议中，商标使用费如何计算？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": "五 粮 液",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得为什么说其核心竞争力存在风险？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": "优刻得",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤对存货发出采用什么计价方法？存货跌价准备如何计提？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "山西焦煤",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新在2024年执行了哪些财政部颁布的新会计准则？哪些变更对财务报表无影响？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [
+     107
+    ],
+    "routed": "杭州高新",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "中直股份在什么情况下会将存货跌价准备予以转回？",
+    "source": "31_600038_中直股份_2026-05-15.pdf",
+    "gold_chunks": [],
+    "routed": "中直股份",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹与四川华鲲振宇智能科技有限责任公司的关联交易涉及哪些类型？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [
+     273,
+     277
+    ],
+    "routed": "四川长虹",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液租用五粮液集团公司的土地，定价标准是如何确定的？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": "五 粮 液",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年焦炭产品的营业收入和营业成本同比增减情况如何？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "山西焦煤",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色2025年度董事会决议通过的利润分配预案是什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     153
+    ],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "四川长虹持有的衍生金融资产和衍生金融负债在公允价值计量中分别属于哪个层次？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": "四川长虹",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码对预计负债如何进行初始计量？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的存货期末余额中，借款利息资本化金额是多少？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司2025年度的财务报表是何时批准报出的？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": "华虹公司",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在2025年审计委员会会议上，对关税和房地产业务提出了哪些建议？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹本期所得税费用合计是多少？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [
+     377
+    ],
+    "routed": "四川长虹",
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "四川长虹在2013年申请解除长虹华意股份限售时，作出了什么承诺？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": "四川长虹",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷在债务重组中作为债务人，如何确认和计量将债务转为权益工具？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     158
+    ],
+    "routed": "中国武夷",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液2025年年度报告中提到，全国白酒行业在2025年的产量、销售收入和利润总额同比变化情况如何？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [
+     15
+    ],
+    "routed": "五 粮 液",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "优刻得2020年限制性股票激励计划在报告期内的考核指标完成情况如何？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": "优刻得",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔的会计年度和记账本位币分别是什么？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "菲林格尔",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动如何定义现金及现金等价物？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": "威力传动",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电在石墨负极材料方面有哪些技术进展？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": "华盛锂电",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码在2025年12月有哪些担保事项涉及神码澳门和神码香港？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司的实际控制人是谁？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": "华虹公司",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码可转换公司债券的发行申请经历了哪些关键步骤？请根据原文简要说明。",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电的其他非流动负债在2025年末为何变为0？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": "华盛锂电",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹的公司治理与法律、行政法规以及中国证监会关于上市公司治理的规定是否存在重大差异？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": "四川长虹",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷2025年度现金流量表中的经营性往来款本期发生额是多少？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [],
+    "routed": "中国武夷",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷的子公司武夷（美国）有限公司目前的经营状态如何？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     226
+    ],
+    "routed": "中国武夷",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "华虹公司报告期内有哪些董事和高级管理人员发生了变动？请举例说明。",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": "华虹公司",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电2025年合并所有者权益变动表中，本期增减变动金额（减少以“－”号填列）是多少？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": "华盛锂电",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色的中文全称和英文全称分别是什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新存货跌价准备中，库存商品本期计提金额和转回或转销金额分别是多少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": "杭州高新",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码自有品牌产品业务在2025年的营业收入和税后净利润分别是多少？同比增长多少？旗下主要品牌是什么？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "优刻得在报告期内的经营活动产生的现金流量净额是多少？",
+    "source": "14_688158_优刻得_2026-06-15.pdf",
+    "gold_chunks": [],
+    "routed": "优刻得",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境在子公司权益中，列举的子公司业务分类有哪些？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "城发环境",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色对同一控制下企业合并形成的长期股权投资，初始投资成本如何确定？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [
+     180
+    ],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "五粮液本期经营活动产生的现金流量净额是多少？与上期相比有何变化？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": "五 粮 液",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码的子公司北京高科数聚技术有限公司在2025年是否发生了减值？计提了多少减值金额？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色2025年度是否进行现金分红？为什么？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码通过同一控制下的企业合并取得的长期股权投资，初始投资成本如何确定？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "威力传动2025年度的营业收入是多少？审计师为什么将收入确认作为关键审计事项？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": "威力传动",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境各行业的毛利率是多少？与上年同期相比有何变化？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "城发环境",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司2025年模拟与电源管理平台销售收入同比增长了多少？主要得益于哪些领域的强劲需求？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": "华虹公司",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年报告中，关于公司治理能力方面，报告期内公司采取了哪些措施？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [
+     140
+    ],
+    "routed": "山西焦煤",
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "华虹公司年报中，部分信息因涉及商业秘密豁免披露，这是依据什么规定？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": "华虹公司",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "四川长虹2025年度母公司基本每股收益是多少？",
+    "source": "40_600839_四川长虹_2026-05-06.pdf",
+    "gold_chunks": [],
+    "routed": "四川长虹",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在2025年完成了哪项矿业公司股权的收购？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境作为承租方，与通辽华通环保有限责任公司的租赁资产是什么？本期支付的租金是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "城发环境",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液2025年末应收票据的账面余额是多少？是否有已质押或已背书未到期的应收票据？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": "五 粮 液",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年度经营活动产生的现金流量净额是多少？与2023年相比是增加还是减少？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": "杭州高新",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "杭州高新2024年经营活动产生的现金流量净额是多少？同比变化的主要原因是什么？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [],
+    "routed": "杭州高新",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境副总经理马小宇在报告期内的任职状态和税前报酬是多少？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "城发环境",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "神州数码关于本次募集资金是否用于房地产业务的承诺是什么？",
+    "source": "15_000034_神州数码_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "神州数码",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "中国武夷2025年期末货币资金中，受限制的资金总额是多少？主要包括哪些类型？",
+    "source": "19_000797_中国武夷_2026-06-01.pdf",
+    "gold_chunks": [
+     175
+    ],
+    "routed": "中国武夷",
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "城发环境在核心竞争力分析中提到了哪些方面？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "城发环境",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤的“质量回报双提升”行动方案是在哪一天披露的？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [],
+    "routed": "山西焦煤",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华盛锂电稳定股价的具体措施有哪些？按什么顺序实施？",
+    "source": "22_688353_华盛锂电_2026-05-27.pdf",
+    "gold_chunks": [],
+    "routed": "华盛锂电",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "菲林格尔管理层对财务报表的编制承担哪些责任？",
+    "source": "33_603226_菲林格尔_2026-05-13.pdf",
+    "gold_chunks": [],
+    "routed": "菲林格尔",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "白银有色在2025年因信息披露问题面临投资者诉讼风险吗？公司是否已为此计提预计负债？",
+    "source": "13_601212_白银有色_2026-06-16.pdf",
+    "gold_chunks": [],
+    "routed": "白银有色",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "山西焦煤2025年年度报告中，母公司现金流量表的经营活动产生的现金流量净额是多少？",
+    "source": "16_000983_山西焦煤_2026-06-12.pdf",
+    "gold_chunks": [
+     145
+    ],
+    "routed": "山西焦煤",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   },
+   {
+    "q": "威力传动报告期内聘任的会计师事务所是哪家？报酬是多少？内部控制审计费用是多少？",
+    "source": "11_300904_威力传动_2026-06-18.pdf",
+    "gold_chunks": [],
+    "routed": "威力传动",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "华虹公司的实际控制人是谁？",
+    "source": "32_688347_华虹公司_2026-05-14.pdf",
+    "gold_chunks": [],
+    "routed": "华虹公司",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "五粮液在2025年度的内部控制审计报告是由哪家会计师事务所出具的？意见类型是什么？",
+    "source": "49_000858_五 粮 液_2026-04-30.pdf",
+    "gold_chunks": [],
+    "routed": "五 粮 液",
+    "doc@6": true,
+    "chunk@6": null,
+    "doc@20": true,
+    "chunk@20": null
+   },
+   {
+    "q": "城发环境如何利用河南省的政策机遇发展水务业务？",
+    "source": "34_000885_城发环境_2026-05-13.pdf",
+    "gold_chunks": [
+     9
+    ],
+    "routed": "城发环境",
+    "doc@6": true,
+    "chunk@6": false,
+    "doc@20": true,
+    "chunk@20": false
+   },
+   {
+    "q": "杭州高新的股票代码、法定代表人及注册地址分别是什么？",
+    "source": "24_300478_杭州高新_2026-05-25.pdf",
+    "gold_chunks": [
+     1
+    ],
+    "routed": "杭州高新",
+    "doc@6": true,
+    "chunk@6": true,
+    "doc@20": true,
+    "chunk@20": true
+   }
+  ]
+ }
+}

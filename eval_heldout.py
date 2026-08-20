@@ -1,86 +1,101 @@
 # -*- coding: utf-8 -*-
-"""held-out 2x2 评测 harness(骨架, 端点待填)
+"""held-out 2x2 评测 harness（RAG 侧已换本地 bge 向量召回）。
 
-简历核心证据 —— 这张表直接证明"FT 只在背过的地方行, RAG 哪都行":
+简历核心证据 —— 这张表直接证明"FT 只在背过的地方行，RAG 哪都行"：
 
               | FT(权重)          | RAG(检索)
 --------------|-------------------|-------------------
-见过 A(10家)  | FT-on-A (高, 背的)  | RAG-on-A (高)
+见过 A(10家)  | FT-on-A (高)      | RAG-on-A (高)
 未见 B(15家)  | FT零样本 (低)      | RAG-on-B (高)   <- 命门证据
 
-- 查询题:
-    A 题 = 03_LoRA数据/qa_alpaca.json          (FT 训过)
-    B 题 = heldout_B/qa_alpaca.json            (FT 从没见过)
-- RAG 知识库:
-    A = 04_RAG数据/rag_chunks.json
-    B = heldout_B/chunks/*.json
-- FT       : 你外部训好的 Qwen3-4B+LoRA 的 /v1/messages 端点 (填 FT_ENDPOINT)
-- RAG 生成 : 复用山大代理或本地模型 (填 GEN_ENDPOINT)
-- 评分     : LLM-as-Judge (填 JUDGE_ENDPOINT) 判"答案是否答对事实"
+- 查询题:  A = 03_LoRA数据/qa_alpaca.json ; B = heldout_B/qa_alpaca.json
+- RAG KB:  A = 04_RAG数据/rag_chunks.json ; B = heldout_B/chunks/*
+- RAG 检索: 本地 bge-large-zh-v1.5 嵌入 + FAISS（见 rag/build_index.py / rag/retrieve.py）
+            B 侧索引 = rag/index.faiss ; A 侧索引 = rag/indexA.faiss
+- FT      : 本地加载 Qwen3-4B + saves/qwen3-4b/lora/sft_rank16（本地 GPU 推理，无需起服务）
+- 生成/裁判: 山大代理（anthropic 兼容），从 .env 读 BASE/TOKEN/MODEL 自动拼
 
-用法(填好下方端点后):
-  python eval_heldout.py --side A    # 算 FT-on-A 与 RAG-on-A
-  python eval_heldout.py --side B    # 算 FT零样本 与 RAG-on-B (命门行)
-  python eval_heldout.py --all       # 跑满 2x2 并打印对比表
+用法（两阶段，推理与 API 分离）:
+  /data1/jiajun/.conda/envs/llf/bin/python rag/build_index.py            # 先建 B 侧索引（必做）
+  /data1/jiajun/.conda/envs/llf/bin/python rag/build_index.py \
+      --chunks-dir 04_RAG数据 --out-dir rag --index-name indexA          # 建 A 侧索引（可选）
+  # 阶段1：本地 GPU 批量 FT 推理并存盘（不调 API，GPU 满载）
+  CUDA_VISIBLE_DEVICES=5 python eval_heldout.py --side B --phase infer
+  # 阶段2：CPU 调 API 做 RAG 生成 + 2x judge（读盘 FT 答案，不占 GPU）
+  python eval_heldout.py --side B --phase judge
+  # 兼容：--phase all 等价于旧混跑；--all 跑满 2x2
 """
-import os, sys, json, re, urllib.request, ssl
+import os
+import sys
+import json
+import threading
+from concurrent.futures import ThreadPoolExecutor
+
+_ft_lock = threading.Lock()  # FT 本地 GPU 推理串行化，避免并发占爆显存
+
+# 预导入 transformers 类：4.57.6 的懒加载在子线程首次触发会失败，
+# 必须在主线程先绑定，供后续线程池的 RAG 检索使用。
+from transformers import AutoModel, AutoTokenizer  # noqa: E402, F401
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+_RAG_RETRIEVER = None
 
-# ===================== 待你填写的端点 =====================
-FT_ENDPOINT = ""      # 你训好的 Qwen3-4B+LoRA 的 /v1/messages
-GEN_ENDPOINT = ""     # RAG 生成用的 LLM(同山大代理或本地)
-JUDGE_ENDPOINT = ""   # LLM-as-Judge
-FT_KEY = ""
-GEN_KEY = ""
-JUDGE_KEY = ""
-BASE = ""             # 若用山大代理, 从 .env 读 ANTHROPIC_BASE_URL
-TOKEN = ""           # 从 .env 读 ANTHROPIC_AUTH_TOKEN
-MODEL = ""           # 从 .env 读 ANTHROPIC_DEFAULT_HAIKU_MODEL
-# ============================================================
+from rag import llm  # noqa: E402  .env 读取 / API 调用 / 本地 FT 模型均已下沉至此
 
-CTX = ssl.create_default_context()
+# ===================== 本地 FT 模型（Qwen3-4B + sft_rank16 LoRA，本地 GPU 推理）=====================
+FT_MODEL = None      # 懒加载的 llm.LocalLLM 实例
+# ===================== 生成/裁判端点（山大代理，从 .env 读）=====================
+_cfg = llm.load_env()
+MODEL = _cfg["MODEL"]
+GEN_ENDPOINT = JUDGE_ENDPOINT = _cfg["ENDPOINT"]
+GEN_KEY = JUDGE_KEY = _cfg["TOKEN"]
+# ================================================
 
 
 def _post(endpoint, key, model, prompt):
-    """通用 /v1/messages 调用, 返回模型文本。endpoint 为空时抛错提醒填。"""
-    if not endpoint:
-        raise RuntimeError("端点未填写: 请在 eval_heldout.py 顶部填 FT_ENDPOINT/GEN_ENDPOINT/JUDGE_ENDPOINT")
-    body = json.dumps({"model": model, "max_tokens": 1024,
-                      "messages": [{"role": "user", "content": prompt}]}).encode()
-    req = urllib.request.Request(endpoint, data=body, headers={
-        "x-api-key": key, "anthropic-version": "2023-06-01",
-        "content-type": "application/json"}, method="POST")
-    with urllib.request.urlopen(req, context=CTX, timeout=60) as r:
-        d = json.loads(r.read().decode())
-    return "".join(c.get("text", "") for c in d.get("content", []) if isinstance(c, dict))
+    """通用 /v1/messages 调用，返回模型文本（实现见 rag/llm.py）。"""
+    return llm.post_messages(endpoint, key, model, prompt)
 
 
-def retrieve(question, kb_chunks, k=4):
-    """从知识库按关键词召回 top-k 片段。
+def get_retriever(side):
+    """懒加载 FAISS 向量检索器。B = heldout_B 索引，A = 04_RAG数据 索引。"""
+    global _RAG_RETRIEVER
+    if _RAG_RETRIEVER is None or _RAG_RETRIEVER.get("side") != side:
+        from rag.retrieve import FAISSRetriever
+        suffix = "A" if side == "A" else ""
+        idx = os.path.join(HERE, "rag", f"index{suffix}.faiss")
+        meta = os.path.join(HERE, "rag", f"index{suffix}.json")
+        if not (os.path.exists(idx) and os.path.exists(meta)):
+            raise RuntimeError(
+                f"缺少 RAG 索引({idx})。请先运行:\n"
+                f"  /data1/jiajun/.conda/envs/llf/bin/python rag/build_index.py"
+                + (" --chunks-dir 04_RAG数据 --out-dir rag --index-name indexA"
+                   if side == "A" else ""))
+        # bge 检索编码器放 CPU：避免与 GPU 上的 FT(Qwen3-4B+LoRA) 争显存
+        _RAG_RETRIEVER = {"side": side, "r": FAISSRetriever(index_path=idx, meta_path=meta, device="cpu")}
+    return _RAG_RETRIEVER["r"]
 
-    TODO(你接本地 bge-m3 时替换这里): 当前是关键词兜底,
-    正式评测请换成 向量召回(本地 bge-m3 嵌入 + faiss), 否则 RAG 侧不公平。
-    """
-    q = set(re.findall(r"[\u4e00-\u9fff]+", question))
-    scored = []
-    for i, c in enumerate(kb_chunks):
-        txt = c.get("text", "")
-        overlap = len(q & set(re.findall(r"[\u4e00-\u9fff]+", txt)))
-        scored.append((overlap, i))
-    scored.sort(reverse=True)
-    return [kb_chunks[i]["text"] for _, i in scored[:k]]
+
+def _load_ft():
+    """懒加载本地 Qwen3-4B + sft_rank16 LoRA（首次调用时占 GPU，之后复用）。"""
+    global FT_MODEL
+    if FT_MODEL is None:
+        # cuda = 逻辑卡0；用 CUDA_VISIBLE_DEVICES=5 把物理卡5映射成 cuda:0 来选卡
+        FT_MODEL = llm.LocalLLM(device="cuda")   # 默认 Qwen3-4B + sft_rank16
+    return FT_MODEL
 
 
 def answer_ft(question):
-    """FT(权重) 直接答, 不给上下文。"""
-    return _post(FT_ENDPOINT, FT_KEY, MODEL, question)
+    """FT(权重) 直接答，不给上下文（本地推理，不走 HTTP）。"""
+    return _load_ft().chat(question, max_new_tokens=512)
 
 
-def answer_rag(question, kb_chunks):
-    """RAG: 先检索, 再把片段喂给生成模型。"""
-    ctx = "\n".join(retrieve(question, kb_chunks))
-    prompt = f"根据以下年报片段回答问题, 严格基于片段、可引用来源:\n{ctx}\n\n问题: {question}"
+def answer_rag(question, side):
+    """RAG: 向量检索 top-k 片段，再喂给生成模型。"""
+    hits = get_retriever(side).search(question, k=6)
+    ctx = "\n".join(f"[{i + 1}] {h['text']}" for i, h in enumerate(hits))
+    prompt = (f"根据以下年报片段回答问题，严格基于片段、可引用来源:\n{ctx}\n\n问题: {question}")
     return _post(GEN_ENDPOINT, GEN_KEY, MODEL, prompt)
 
 
@@ -98,47 +113,107 @@ def load_qa(path):
     return json.load(open(path, encoding="utf-8"))
 
 
-def load_chunks(path):
-    if os.path.isdir(path):
-        chunks = []
-        for f in sorted(os.listdir(path)):
-            if f.endswith(".json"):
-                chunks.extend(json.load(open(os.path.join(path, f), encoding="utf-8")))
-        return chunks
-    return json.load(open(path, encoding="utf-8"))
-
-
-def run_side(side):
+def _qa_path(side):
     if side == "A":
-        qa = load_qa(os.path.join(HERE, "03_LoRA数据", "qa_alpaca.json"))
-        kb = load_chunks(os.path.join(HERE, "04_RAG数据", "rag_chunks.json"))
-    else:  # B
-        qa = load_qa(os.path.join(HERE, "heldout_B", "qa_alpaca.json"))
-        kb = load_chunks(os.path.join(HERE, "heldout_B", "chunks"))
+        return os.path.join(HERE, "03_LoRA数据", "qa_alpaca.json")
+    return os.path.join(HERE, "heldout_B", "qa_alpaca.json")
 
-    ft_scores, rag_scores = [], []
-    for q in qa:
+
+def run_infer(side, limit=None):
+    """阶段1：本地 GPU 批量 FT 推理，存 ft_answers_<side>.json。不调 API。"""
+    qa = load_qa(_qa_path(side))
+    if limit:
+        qa = qa[:limit]
+    total = len(qa)
+    out = []
+    _load_ft()  # 预热到 GPU（只此一次）
+    for i, q in enumerate(qa, 1):
         qn = q["instruction"]
-        ft_scores.append(judge(qn, answer_ft(qn)))
-        rag_scores.append(judge(qn, answer_rag(qn, kb)))
-    n = len(qa) or 1
-    return sum(ft_scores) / n, sum(rag_scores) / n
+        ans = answer_ft(qn)
+        out.append({"instruction": qn, "ft_answer": ans})
+        if i % 50 == 0 or i == total:
+            print(f"  [infer {side}] {i}/{total}", flush=True)
+    path = os.path.join(HERE, f"ft_answers_{side}.json")
+    json.dump(out, open(path, "w", encoding="utf-8"),
+              ensure_ascii=False, indent=1)
+    print(f"已存 {path} ({len(out)} 条)")
+
+
+def run_judge(side, limit=None, workers=8):
+    """阶段2：CPU 调 API 做 RAG 生成 + 2x judge。FT 答案读盘，不占 GPU。"""
+    qa = load_qa(_qa_path(side))
+    if limit:
+        qa = qa[:limit]
+    fa_path = os.path.join(HERE, f"ft_answers_{side}.json")
+    ft_map = {}
+    if os.path.exists(fa_path):
+        ft_map = {x["instruction"]: x["ft_answer"]
+                  for x in json.load(open(fa_path, encoding="utf-8"))}
+    else:
+        print(f"警告: 未找到 {fa_path}，将临时本地推理(占GPU)")
+    # 预热：主线程先加载一次 RAG 检索器(bge)，避免子线程首次触发 meta tensor 报错
+    get_retriever(side)
+    total = len(qa)
+    ft_scores, rag_scores = [], []
+
+    def _process(q):
+        qn = q["instruction"]
+        ft_ans = ft_map.get(qn)
+        if ft_ans is None:              # 兜底：infer 阶段没跑才临时算
+            with _ft_lock:
+                ft_ans = answer_ft(qn)
+        rag_ans = answer_rag(qn, side)  # API 生成
+        jft = judge(qn, ft_ans)         # API 裁判
+        jrag = judge(qn, rag_ans)       # API 裁判
+        return jft, jrag
+
+    done = 0
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        for jft, jrag in ex.map(_process, qa):
+            ft_scores.append(jft)
+            rag_scores.append(jrag)
+            done += 1
+            if done % 10 == 0 or done == total:
+                f = sum(ft_scores) / done
+                r = sum(rag_scores) / done
+                print(f"  [judge {side}] {done}/{total}  实时 FT={f:.1%}  RAG={r:.1%}",
+                      flush=True)
+    n = total or 1
+    f, r = sum(ft_scores) / n, sum(rag_scores) / n
+    label = "见过 A(10家)" if side == "A" else "未见 B(15家)"
+    print(f"[{label}] FT零样本={f:.1%}  RAG-on-{side}={r:.1%}")
+    return f, r
 
 
 def main():
-    which = sys.argv[1] if len(sys.argv) > 1 else "--all"
-    if which in ("--side", "--all"):
-        fa, ra = run_side("A")
-        print(f"[见过 A] FT-on-A={fa:.1%}  RAG-on-A={ra:.1%}")
-    if which in ("--side", "--all"):
-        fb, rb = run_side("B")
-        print(f"[未见 B] FT零样本={fb:.1%}  RAG-on-B={rb:.1%}")
-    if which == "--all":
-        print("\n===== 2x2 对比表 =====")
-        print(f"             | FT(权重)     | RAG(检索)")
-        print(f"-------------|-------------|-------------")
-        print(f"见过 A(10家) | (见上)      | (见上)")
-        print(f"未见 B(15家) | (见上)      | (见上)")
+    args = sys.argv[1:]
+    # 阶段: infer(本地推理存盘) / judge(API评测) / all(混合, 兼容旧用法)
+    phase = "all"
+    if "--phase" in args:
+        try:
+            phase = args[args.index("--phase") + 1]
+        except Exception:
+            phase = "all"
+    sides = ["B"]
+    if "--all" in args:
+        sides = ["A", "B"]
+    elif "--side" in args:
+        i = args.index("--side")
+        nxt = args[i + 1] if i + 1 < len(args) else "B"
+        sides = [nxt] if not nxt.startswith("--") else ["B"]
+    limit = None
+    if "--limit" in args:
+        try:
+            limit = int(args[args.index("--limit") + 1])
+        except Exception:
+            limit = None
+
+    for s in sides:
+        if phase in ("infer", "all"):
+            run_infer(s, limit)
+        if phase in ("judge", "all"):
+            run_judge(s, limit)
+    if "A" in sides and "B" in sides and phase in ("judge", "all"):
         print("\n结论: FT 只在见过的地方高 -> 把事实背进了权重; RAG 未见也高 -> 事实在知识库。")
 
 

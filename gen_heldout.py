@@ -13,10 +13,19 @@
 
 用法(需山大代理额度, 由用户确认后跑):
   python gen_heldout.py --dry                 # 预览将挑哪 15 家(不调 API)
-  python gen_heldout.py --pick 15            # 自动跨板型挑 15 家并生成
-  python gen_heldout.py --manifest heldout_B/manifest.json  # 手动指定清单
-"""
-import os, sys, json, re, urllib.request, ssl
+  python gen_heldout.py --manifest heldout_B/manifest.json  # 用手动清单(已挑好的 15 家)
+  python gen_heldout.py --pick 15             # 自动跨板型挑 15 家并生成
+  python gen_heldout.py --merge-chars 8000    # 相邻同型块合并发, 封顶字数(默认 8000; 0=不合并)
+  python gen_heldout.py --qa-per 6            # 每次调用生成问答对数(默认 6)
+  python gen_heldout.py --workers 4           # API 并发(默认 4)
+  python gen_heldout.py --fresh               # 忽略已有 chunks, 从头重跑
+注意: 已写出 chunks 的 PDF 会自动跳过(断点续存); --fresh 可强制重跑。
+
+2026-07-26 方案一改造(修复 QA 归属缺失, 见 RAG进展总结 §6.4):
+  - 每个问题强制带公司简称(不再用"公司"指代), 每条 QA 记 source(来源 PDF)与 company;
+  - QA 断点续存改为按 qa_done.json 进度表(与 chunks 是否存在解耦, chunks 已有则直接复用不重抽 PDF);
+  - 每完成 10 组即落盘一次(分段落盘), 单组失败自动重试 3 次。"""
+import os, sys, json, re, time, urllib.request, ssl
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -49,28 +58,42 @@ def digit_ratio(seg):
     return sum(c.isdigit() for c in seg) / max(1, len(seg))
 
 
-PROMPT = (
-    "你是金融财报分析助手。下面是一份上市公司年度报告的一个片段。\n"
-    "请基于【片段原文】生成 2~3 个中文问答对, 要求:\n"
-    "1) 问题要自然(像真实用户会问的), 回答严格基于片段、不编造;\n"
-    "2) 优先事实/定义/业务/定性分析类; 若片段含财务数字, 仅在原文明确给出时使用, 不要推算;\n"
-    "3) 只输出 JSON 数组, 不要解释, 格式:[{\"instruction\":\"...\",\"output\":\"...\"}]\n\n"
-    "【片段原文】\n"
-)
+def company_of(fn):
+    """从文件名解析公司简称: NN_代码_简称_日期.pdf -> 简称(去内部空格, 兼容"五 粮 液")。"""
+    parts = re.sub(r"\.pdf$", "", os.path.basename(fn)).split("_")
+    return parts[2].replace(" ", "") if len(parts) >= 3 else parts[0]
 
 
-def call_model(seg):
+def build_prompt(qa_per, company):
+    lo, hi = max(2, qa_per - 1), qa_per + 1
+    return (
+        f"你是金融财报分析助手。下面是上市公司「{company}」年度报告的若干片段(可能来自相邻章节, 用【块N】分隔)。\n"
+        f"请基于【片段原文】尽可能多地生成中文问答对(建议 {lo}~{hi} 个, 片段多/信息丰富时可更多), 要求:\n"
+        f"1) 问题要自然(像真实用户会问的), 且每个问题必须明确写出公司名「{company}」, 禁止用\"公司\"\"该公司\"\"贵公司\"等指代;\n"
+        "2) 回答严格基于片段、不编造; 优先事实/定义/业务/定性分析类; 若片段含财务数字, 仅在原文明确给出时使用, 不要推算;\n"
+        "3) 只输出 JSON 数组, 不要解释, 格式:[{\"instruction\":\"...\",\"output\":\"...\"}]\n\n"
+        "【片段原文】\n"
+    )
+
+
+def call_model(prefix, seg, tries=3):
     body = json.dumps({
-        "model": MODEL, "max_tokens": 1024,
-        "messages": [{"role": "user", "content": PROMPT + seg}],
+        "model": MODEL, "max_tokens": 2048,
+        "messages": [{"role": "user", "content": prefix + seg}],
     }).encode()
-    req = urllib.request.Request(
-        f"{BASE}/v1/messages", data=body, headers={
-            "x-api-key": TOKEN, "anthropic-version": "2023-06-01",
-            "content-type": "application/json"}, method="POST")
-    with urllib.request.urlopen(req, context=CTX, timeout=60) as r:
-        d = json.loads(r.read().decode())
-    return "".join(c.get("text", "") for c in d.get("content", []) if isinstance(c, dict))
+    for t in range(tries):
+        try:
+            req = urllib.request.Request(
+                f"{BASE}/v1/messages", data=body, headers={
+                    "x-api-key": TOKEN, "anthropic-version": "2023-06-01",
+                    "content-type": "application/json"}, method="POST")
+            with urllib.request.urlopen(req, context=CTX, timeout=120) as r:
+                d = json.loads(r.read().decode())
+            return "".join(c.get("text", "") for c in d.get("content", []) if isinstance(c, dict))
+        except Exception:
+            if t == tries - 1:
+                raise
+            time.sleep(5 * (t + 1))
 
 
 def parse_qa(txt):
@@ -136,9 +159,16 @@ def auto_pick(cands, n):
 
 def main():
     dry = "--dry" in sys.argv
+    fresh = "--fresh" in sys.argv
     manifest = _arg("--manifest")
     pick = _arg("--pick")
     n = int(pick) if pick else 15
+    merge = _arg("--merge-chars")
+    MERGE_CHARS = int(merge) if merge is not None else 8000
+    qp = _arg("--qa-per")
+    QA_PER = int(qp) if qp is not None else 6
+    w = _arg("--workers")
+    WORKERS = int(w) if w is not None else 4
     if manifest:
         picks = json.load(open(manifest, encoding="utf-8"))
     else:
@@ -150,47 +180,97 @@ def main():
     if dry:
         print("\n[--dry] 仅预览, 未调 API、未写文件。")
         return
-    alpaca, sharegpt = [], []
-    for fi, fn in enumerate(picks, 1):
-        path = os.path.join(PDFS, fn)
+    # 断点续存(方案一改造): QA 进度以 qa_done.json 为准(整家跑完才记), 与 chunks 解耦;
+    # chunks 已存在则直接复用(不重抽 PDF), 未完成家的残留 QA 重跑前先按 source 清掉防重复。
+    DONEF = os.path.join(HELDOUT, "qa_done.json")
+    done = set()
+    if not fresh and os.path.exists(DONEF):
         try:
-            pages = cr.extract_pages(path)
-            clean = cr.clean_pages(pages)
-            tables = cr.extract_tables(path)
-            chunks = cr.build_chunks(clean, tables)
-        except Exception as e:
-            print(f"[{fi}] 清洗/结构化失败 {fn}: {e}")
-            continue
+            done = set(json.load(open(DONEF, encoding="utf-8")))
+        except Exception:
+            pass
+    # 续存时把磁盘上已有的 QA 载入, 否则被跳过 PDF 的 QA 会丢失(只保留新生成的)
+    alpaca, sharegpt = [], []
+    if not fresh:
+        for p, lst in ((OUT_ALP, alpaca), (OUT_SHA, sharegpt)):
+            if os.path.exists(p):
+                try:
+                    lst.extend(json.load(open(p, encoding="utf-8")))
+                except Exception:
+                    pass
+
+    def _flush():
+        json.dump(alpaca, open(OUT_ALP, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        json.dump(sharegpt, open(OUT_SHA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+
+    for fi, fn in enumerate(picks, 1):
         base = re.sub(r"\.pdf$", "", fn)
-        # RAG 知识库(B 的 chunks, 本地, 免费) -> heldout_B/chunks/
-        json.dump(chunks, open(os.path.join(CHUNK_DIR, base + "_chunks.json"), "w", encoding="utf-8"),
-                  ensure_ascii=False, indent=2)
-        seg_by_idx = {}
+        if fn in done:
+            print(f"[{fi}/{len(picks)}] {fn}  QA 已完成, 跳过")
+            continue
+        company = company_of(fn)
+        chunk_f = os.path.join(CHUNK_DIR, base + "_chunks.json")
+        if not fresh and os.path.exists(chunk_f):
+            chunks = json.load(open(chunk_f, encoding="utf-8"))  # 复用已有切块, 不重抽 PDF
+        else:
+            path = os.path.join(PDFS, fn)
+            try:
+                pages = cr.extract_pages(path)
+                clean = cr.clean_pages(pages)
+                tables = cr.extract_tables(path)
+                chunks = cr.build_chunks(clean, tables)
+            except Exception as e:
+                print(f"[{fi}] 清洗/结构化失败 {fn}: {e}")
+                continue
+            # RAG 知识库(B 的 chunks, 本地, 免费) -> heldout_B/chunks/ (切块保持原样, 不合并)
+            json.dump(chunks, open(chunk_f, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        # 本家上次中断的残留 QA 先清掉, 避免重复
+        alpaca[:] = [q for q in alpaca if q.get("source") != fn]
+        sharegpt[:] = [q for q in sharegpt if q.get("source") != fn]
+        prefix = build_prompt(QA_PER, company)
+        # QA 组: 相邻同类块(非表格/表格)按字符预算合并, 减少 API 调用; 跨类型不合并保上下文
+        groups = []
+        buf, buf_chars, buf_type = [], 0, None
         for ci, seg in enumerate(chunks, 1):
             is_table = bool(re.match(r"^【.+第\d+页】", seg))
             if (not is_table) and digit_ratio(seg) >= 0.5:
                 continue
-            seg_by_idx[ci] = seg
+            cur = "table" if is_table else "text"
+            if buf and (not MERGE_CHARS or cur != buf_type or buf_chars + len(seg) > MERGE_CHARS):
+                groups.append("\n\n---\n\n".join(buf))
+                buf, buf_chars, buf_type = [], 0, None
+            buf.append(f"【块{ci}】\n{seg}")
+            buf_chars += len(seg)
+            buf_type = cur
+        if buf:
+            groups.append("\n\n---\n\n".join(buf))
 
-        def _gen(ci, seg):
+        def _gen(text):
             try:
-                return ci, parse_qa(call_model(seg))
+                return parse_qa(call_model(prefix, text))
             except Exception as e:
-                print(f"   块{ci}: 调用失败 {e}")
-                return ci, []
+                print(f"   组调用失败 {e}")
+                return []
 
-        if seg_by_idx:
-            with ThreadPoolExecutor(max_workers=2) as ex:
-                for f in as_completed(ex.submit(_gen, ci, s) for ci, s in seg_by_idx.items()):
-                    ci, qas = f.result()
-                    for q in qas:
+        if groups:
+            with ThreadPoolExecutor(max_workers=WORKERS) as ex:
+                futs = [ex.submit(_gen, g) for g in groups]
+                for gi, f in enumerate(as_completed(futs), 1):
+                    for q in f.result():
+                        q["source"], q["company"] = fn, company
                         alpaca.append(q)
                         sharegpt.append({"conversations": [
                             {"role": "user", "content": q["instruction"]},
-                            {"role": "assistant", "content": q["output"]}]})
-        json.dump(alpaca, open(OUT_ALP, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-        json.dump(sharegpt, open(OUT_SHA, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-        print(f"[{fi}/{len(picks)}] {fn}  切块={len(chunks)}  QA={len(alpaca)}")
+                            {"role": "assistant", "content": q["output"]}],
+                            "source": fn, "company": company})
+                    # 分段落盘: 每 10 组存一次, 中途挂掉也只重跑本家
+                    if gi % 10 == 0:
+                        _flush()
+                        print(f"   [{company}] 组 {gi}/{len(groups)} 已落盘", flush=True)
+        _flush()
+        done.add(fn)
+        json.dump(sorted(done), open(DONEF, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        print(f"[{fi}/{len(picks)}] {fn}  切块={len(chunks)}  组={len(groups)}  QA累计={len(alpaca)}")
     print(f"\n完成: heldout_B/qa_alpaca={len(alpaca)} 条; chunks 已写入 heldout_B/chunks/ (RAG KB)")
 
 
